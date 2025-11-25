@@ -48,4 +48,5 @@ AI tools were used during development for brainstorming ideas and debugging issu
 ## How to Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YourUsername/EmotiSpend.git
+   git clone https://github.com/kmendez2707/EmotiSpend.git
+
