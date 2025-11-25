@@ -1,0 +1,168 @@
+<!-- Final Project - COP 5818
+// Team 7
+// Henry Gibson-Garcia – henry.gibson@ucf.edu
+// Katherine Mendez Zambrano – ka523884@ucf.edu -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EmotiSpend 💸😊</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Vibrant geometric background -->
+  <div class="background-shapes">
+    <div class="shape red"></div>
+    <div class="shape yellow"></div>
+    <div class="shape teal"></div>
+    <div class="shape purple"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>EmotiSpend 💸😊</h1>
+    <p class="tagline">Track your spending *and* your feelings 🎭</p>
+  </header>
+
+  <!-- Auth Section -->
+  <section id="auth-section">
+    <h2>Login / Sign Up 🔑</h2>
+    <div id="login-form">
+      <input type="email" id="email" placeholder="Email 📧">
+      <input type="password" id="password" placeholder="Password 🔒">
+      <button id="signup-btn">Sign Up ✨</button>
+      <button id="signin-btn">Sign In 🚀</button>
+    </div>
+    <button id="signout-btn" style="display:none;">Sign Out 👋</button>
+    <p id="auth-status">Not logged in</p>
+  </section>
+
+  <!-- Expense Section -->
+  <section id="expense-section" style="display:none;">
+    <h2>Add Expense 📝</h2>
+    <form id="expense-form">
+  <!-- Summary of selections so far -->
+  <div id="expense-summary">
+    <div id="summary-amount" class="summary-row" style="display:none;">
+      <span class="summary-label">Amount:</span>
+      <span class="summary-value" id="summary-amount-value"></span>
+      <button type="button" id="edit-amount-btn">Edit</button>
+    </div>
+
+    <div id="summary-category" class="summary-row" style="display:none;">
+      <span class="summary-label">Category:</span>
+      <span class="summary-value" id="summary-category-value"></span>
+      <button type="button" id="edit-category-btn">Edit</button>
+    </div>
+
+    <div id="summary-valence" class="summary-row" style="display:none;">
+      <span class="summary-label">Felt:</span>
+      <span class="summary-value" id="summary-valence-value"></span>
+      <button type="button" id="edit-valence-btn">Edit</button>
+    </div>
+
+    <div id="summary-emotion" class="summary-row" style="display:none;">
+      <span class="summary-label">Emotion:</span>
+      <span class="summary-value" id="summary-emotion-value"></span>
+      <button type="button" id="edit-emotion-btn">Edit</button>
+    </div>
+  </div>
+
+  <!-- STEP 1: Amount + Category -->
+  <div id="step-category-amount">
+    <p class="prompt">How much did you spend?</p>
+    <input type="number" id="amount" placeholder="Amount 💵" required>
+    <input type="range" id="amount-slider" min="0" max="1000" step="1" value="0">
+
+    <p class="prompt">What did you spend money on?</p>
+    <div class="button-group" id="category-buttons">
+      <button type="button" data-category="Food">Food 🍔</button>
+      <button type="button" data-category="Transportation">Transportation 🚗</button>
+      <button type="button" data-category="Entertainment">Entertainment 🎬</button>
+      <button type="button" data-category="Other">Other 🛒</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: Valence -->
+  <div id="step-valence" style="display:none;">
+    <p class="prompt">Did you spend the money because you felt good or bad?</p>
+    <div class="button-group" id="valence-buttons">
+      <button type="button" data-valence="Good">Good 😃</button>
+      <button type="button" data-valence="Bad">Bad 😔</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Emotion -->
+  <div id="step-emotion" style="display:none;">
+    <p class="prompt">What specific emotion were you feeling?</p>
+    <div class="button-group" id="emotion-buttons"></div>
+  </div>
+
+  <!-- STEP 4: Intensity + note + submit -->
+  <div id="step-intensity" style="display:none;">
+    <label for="intensity">Emotion Intensity 🎚️</label>
+    <input type="range" id="intensity" min="0" max="100" step="1" value="50">
+    <output id="intensityValue">50</output>
+    <small>
+      Drag the slider to show how strongly you felt this emotion (0 = none, 100 = overwhelming).
+    </small>
+    <div id="emojiDisplay">😊</div>
+
+    <input type="text" id="note" placeholder="Optional note 🖊️">
+    <button type="submit">Add Expense ➕</button>
+  </div>
+
+  <!-- Old category / valence / emotion selects are no longer needed in the UI -->
+</form>
+<p id="expense-status"></p>
+
+  </section>
+
+  <!-- Dashboard Section -->
+<section id="dashboard-section" style="display:none;">
+  <h2>Dashboard 📊</h2>
+  <div class="dashboard-grid">
+    <div class="chart-container">
+      <canvas id="categoryChart"></canvas>
+      <div id="categoryLegend" class="legend"></div>
+    </div>
+    <div class="chart-container">
+      <canvas id="emotionChart"></canvas>
+      <div id="emotionLegend" class="legend"></div>
+    </div>
+  </div>
+
+  <!-- Transactions table -->
+  <section id="transactions-section" style="display:none; margin-top: 20px;">
+    <h3>Transactions 🧾</h3>
+    <div class="transactions-controls">
+      <button id="view-all-transactions-btn">View all transactions</button>
+      <p id="transactions-filter-label" style="margin-left: 10px;"></p>
+    </div>
+    <table id="transactions-table">
+      <thead>
+        <tr>
+          <th data-sort="spent_at">Date</th>
+          <th data-sort="category">Category</th>
+          <th data-sort="amount">Amount</th>
+          <th data-sort="valence">Valence</th>
+          <th data-sort="emotion">Emotion</th>
+          <th data-sort="intensity">Intensity</th>
+          <th>Note</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</section>
+
+
+  <!-- Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Your app logic -->
+  <script type="module" src="./app.js"></script>
+  
+</body>
+</html>

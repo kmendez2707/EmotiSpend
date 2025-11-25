@@ -1,0 +1,240 @@
+/* Final Project - COP 5818
+// Team 7
+// Henry Gibson-Garcia – henry.gibson@ucf.edu
+// Katherine Mendez Zambrano – ka523884@ucf.edu
+
+/* Global styles */
+body {
+  font-family: 'Segoe UI Emoji', 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+}
+
+/* Vibrant geometric background shapes */
+.background-shapes {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  width: 300px; height: 300px;
+  transform: rotate(20deg);
+  opacity: 0.8;
+  border-radius: 12px;
+}
+
+.shape.red { background: #FF6F61; top: -50px; left: -50px; }
+.shape.yellow { background: #FFCE54; top: 100px; left: 200px; }
+.shape.teal { background: #4FC1E9; bottom: 50px; right: 150px; }
+.shape.purple { background: #AC92EC; bottom: -80px; left: 100px; }
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #FF6F61;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+
+.tagline {
+  font-style: italic;
+  color: #555;
+}
+
+/* Sections as cards */
+section {
+  background: rgba(255,255,255,0.9);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* Inputs and buttons */
+input, select, button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #FF6F61;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #FF856F;
+}
+
+/* Slider */
+#intensity {
+  width: 100%;
+  accent-color: #FF6F61;
+  margin-top: 5px;
+}
+
+#intensityValue {
+  font-weight: bold;
+  margin-left: 10px;
+  color: #444;
+}
+
+/* Emoji feedback */
+#emojiDisplay {
+  font-size: 2.5rem;
+  margin-top: 10px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+#emojiDisplay.bounce {
+  transform: scale(1.3);
+}
+
+/* Dashboard grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.chart-container {
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Smaller charts */
+.chart-container canvas {
+  max-width: 220px;
+  max-height: 220px;
+  margin: auto;
+}
+
+/* Legends */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+/* Helper text */
+small {
+  display: block;
+  margin-bottom: 10px;
+  color: gray;
+  font-style: italic;
+}
+/* Step prompts */
+.prompt {
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* Button groups (category, valence, emotion) */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.button-group button {
+  display: inline-block;
+}
+
+/* Selected state for option buttons */
+.button-group button.selected {
+  outline: 2px solid rgba(0, 0, 0, 0.25);
+  background: #FF856F;
+}
+
+/* Summary rows */
+#expense-summary {
+  margin-bottom: 15px;
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.summary-label {
+  font-weight: 600;
+}
+
+.summary-value {
+  flex: 1;
+  opacity: 0.9;
+}
+
+.summary-row button {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+}
+#transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+#transactions-table th,
+#transactions-table td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+}
+
+#transactions-table th {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.transactions-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#transactions-filter-label {
+  font-style: italic;
+  color: #555;
+}
